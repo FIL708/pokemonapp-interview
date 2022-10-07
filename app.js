@@ -19,7 +19,9 @@ const detailId = document.querySelector(".detail-id")
 const detailName = document.querySelector(".detail-name")
 const detailTypes = document.querySelector(".detail-types")
 const detailImage = document.querySelector(".detail-image")
-const detailStats = document.querySelectorAll(".detail-stat")
+const detailStats = document.querySelectorAll(".detail-stat-name")
+const detailProgress = document.getElementsByTagName("progress")
+const detailMeasure = document.querySelectorAll(".detail-size")
 const detailEvo = document.querySelector(".detail-evolution")
 
 const fetchDetailData = (event) => {
@@ -27,8 +29,8 @@ const fetchDetailData = (event) => {
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data.types)
-            //ADD ID OF POKEMON
+            
+            //RENDER ID OF POKEMON
             if (data.id < 10) {
                 detailId.textContent = `#00${data.id}`
             } else if (data.id < 100 && data.id >= 10) {
@@ -36,26 +38,43 @@ const fetchDetailData = (event) => {
             } else {
                 detailId.textContent = `#${data.id}`
             }
-            //ADD NAME OF POKEMON
+            //RENDER NAME OF POKEMON
             detailName.textContent = data.species.name
 
             //RENDER TYPES OF POKEMON
             detailTypes.innerHTML = ""
             data.types.forEach(item => {
-                console.log(item.type.name);
-                const typeToRender = document.createElement("p")
-                typeToRender.classList.add("detail-type")
-                typeToRender.textContent = item.type.name
+                const typeToRender = document.createElement("p");
+                typeToRender.classList.add("detail-type");
+                typeToRender.textContent = item.type.name;
                 detailTypes.appendChild(typeToRender)
             });
 
             //RENDER IMAGE OF POKEMON
-            detailImage
+            const imagesArray = [data.sprites.front_default, data.sprites.back_default];
+            detailImage.src = imagesArray[0];
+            const changeImage = () => {
+                if (detailImage.src === imagesArray[0]) {
+                    detailImage.src = imagesArray[1]
+                } else if (detailImage.src === imagesArray[1]) {
+                    detailImage.src = imagesArray[0]
+                }
+                setTimeout(changeImage, 2500);
+            }
+            setTimeout(changeImage, 2500);
 
+            //RENDER STATS OF POKEMON
+            for (let index = 0; index < detailProgress.length; index++) {
+                detailProgress[index].value = data.stats[index].base_stat
+            }
+
+            //RENDER SIZE OF POKEMON
+            detailMeasure[0].textContent = `Height: ${data.height * 10} cm`
+            detailMeasure[1].textContent = `Weight: ${data.weight / 10} kg`
         })
 }
 
-// let imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/ditto.png"
+
 // SEARCH BAR
 
 const filterPokemonListByName = () => {
