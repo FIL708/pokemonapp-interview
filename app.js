@@ -21,3 +21,7 @@ const fetchDetailData = (event) => {
 }
 
 let imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/ditto.png"
+
+// git add .
+// git commit -m "adding functionality"
+// git push origin
