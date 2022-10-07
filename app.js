@@ -25,6 +25,86 @@ const detailMeasure = document.querySelectorAll(".detail-size")
 const detailEvo = document.querySelector(".detail-evolution")
 
 
+const addBgColorDependOnType = (element) => {
+    console.log(element, "color change", element.textContent);
+    const type = element.textContent
+
+    switch (element.textContent) {
+        case "normal":
+            element.style.backgroundColor = "#a8a878"
+            break;
+
+        case "fighting":
+            element.style.backgroundColor = "#c03029"
+            break;
+
+        case "flying":
+            element.style.backgroundColor = "#a890f0"
+            break;
+
+        case "poison":
+            element.style.backgroundColor = "#a040a0"
+            break;
+
+        case "ground":
+            element.style.backgroundColor = "#e0c068"
+            break;
+
+        case "rock":
+            element.style.backgroundColor = "#b8a038"
+            break;
+
+        case "bug":
+            element.style.backgroundColor = "#a8b820"
+            break;
+
+        case "ghost":
+            element.style.backgroundColor = "#705898"
+            break;
+
+        case "steel":
+            element.style.backgroundColor = "#b8b8d0"
+            break;
+
+        case "fire":
+            element.style.backgroundColor = "#f08030"
+            break;
+
+        case "water":
+            element.style.backgroundColor = "#6890f0"
+            break;
+
+        case "grass":
+            element.style.backgroundColor = "#78c850"
+            break;
+
+        case "electric":
+            element.style.backgroundColor = "#f8d030"
+            break;
+
+        case "psychic":
+            element.style.backgroundColor = "#f85888"
+            break;
+
+        case "ice":
+            element.style.backgroundColor = "#98d8d8"
+            break;
+
+        case "dragon":
+            element.style.backgroundColor = "#7038f8"
+            break;
+
+        case "dark":
+            element.style.backgroundColor = "#705848"
+            break;
+
+        case "fairy":
+            element.style.backgroundColor = "#ee88ac"
+            break;
+    }
+    
+}
+
 const fetchDetailData = (event) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${event.target.textContent.toLowerCase()}`
     fetch(url)
@@ -49,6 +129,7 @@ const fetchDetailData = (event) => {
                 typeToRender.classList.add("detail-type");
                 typeToRender.textContent = item.type.name;
                 detailTypes.appendChild(typeToRender)
+                addBgColorDependOnType(typeToRender)
             });
 
             //RENDER IMAGE OF POKEMON
