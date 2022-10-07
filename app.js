@@ -19,7 +19,7 @@ const detailId = document.querySelector(".detail-id")
 const detailName = document.querySelector(".detail-name")
 const detailTypes = document.querySelector(".detail-types")
 const detailImage = document.querySelector(".detail-image")
-const detailStats = document.querySelectorAll(".detail-stat-name")
+const detailStatsName = document.getElementsByClassName("detail-stat-name")
 const detailProgress = document.getElementsByTagName("progress")
 const detailMeasure = document.querySelectorAll(".detail-size")
 const detailEvo = document.querySelector(".detail-evolution")
@@ -65,7 +65,11 @@ const fetchDetailData = (event) => {
 
             //RENDER STATS OF POKEMON
             for (let index = 0; index < detailProgress.length; index++) {
-                detailProgress[index].value = data.stats[index].base_stat
+                let statValue = data.stats[index].base_stat
+                let statName = data.stats[index].stat.name
+
+                detailProgress[index].value = statValue
+                detailStatsName[index].textContent = `${statName}: ${statValue}`
             }
 
             //RENDER SIZE OF POKEMON
