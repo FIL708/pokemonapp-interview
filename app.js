@@ -19,10 +19,11 @@ const detailId = document.querySelector(".detail-id")
 const detailName = document.querySelector(".detail-name")
 const detailTypes = document.querySelector(".detail-types")
 const detailImage = document.querySelector(".detail-image")
-const detailStatsName = document.getElementsByClassName("detail-stat-name")
+const detailStatsValue = document.getElementsByClassName("detail-stat-value")
 const detailProgress = document.getElementsByTagName("progress")
 const detailMeasure = document.querySelectorAll(".detail-size")
 const detailEvo = document.querySelector(".detail-evolution")
+
 
 const fetchDetailData = (event) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${event.target.textContent.toLowerCase()}`
@@ -66,10 +67,9 @@ const fetchDetailData = (event) => {
             //RENDER STATS OF POKEMON
             for (let index = 0; index < detailProgress.length; index++) {
                 let statValue = data.stats[index].base_stat
-                let statName = data.stats[index].stat.name
-
+            
                 detailProgress[index].value = statValue
-                detailStatsName[index].textContent = `${statName}: ${statValue}`
+                detailStatsValue[index].textContent = statValue
             }
 
             //RENDER SIZE OF POKEMON
@@ -83,7 +83,6 @@ const fetchDetailData = (event) => {
 
 
 // SEARCH BAR
-
 const filterPokemonListByName = () => {
     let input = document.getElementById("search-bar").value.toLowerCase();
     const pokemonListElements = document.getElementsByClassName("pokemon-name");
@@ -98,4 +97,4 @@ const filterPokemonListByName = () => {
 
 // git add .
 // git commit -m "adding functionality"
-// git push origin
+// git push origin main
