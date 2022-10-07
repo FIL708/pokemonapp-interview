@@ -25,8 +25,8 @@ const detailStatsValue = document.getElementsByClassName("detail-stat-value")
 const detailProgress = document.getElementsByTagName("progress")
 const detailInfoValues = document.getElementsByClassName("detail-info-value")
 
+//FUNCTION TO CHANGE TYPE BACKGROUND-COLOR DEPEND ON A TYPE OF POKEMON
 const addBgColorDependOnType = (element) => {
-    const type = element.textContent
 
     switch (element.textContent) {
         case "normal":
@@ -103,15 +103,17 @@ const addBgColorDependOnType = (element) => {
     }
     
 }
+
+
+
 //FETCH & RENDER POKEMON DETAILS
 const fetchDetailData = (event) => {
-    console.log(event.target.getAttribute("value"));
+    const targetRef = event.target.getAttribute("value")
     
-    const PokemonUrl = `https://pokeapi.co/api/v2/pokemon/${event.target.getAttribute("value")}`
+    const PokemonUrl = `https://pokeapi.co/api/v2/pokemon/${targetRef}`
     fetch(PokemonUrl)
         .then((res) => res.json())
         .then((data) => {
-            
             //RENDER ID OF POKEMON
             if (data.id < 10) {
                 detailId.textContent = `#00${data.id}`
@@ -158,11 +160,12 @@ const fetchDetailData = (event) => {
             }
 
             //FETCH & RENDER ADDITIONAL INFORMATION
-            const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${event.target.textContent.toLowerCase()}`
+            const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${targetRef}`
             
             fetch(speciesUrl)
                 .then((res) => res.json())
                 .then((dataSpecies) => {
+
                     let infoToRenderArray = [
                         data.height * 10 + " cm",
                         data.weight / 10 + " kg",
@@ -175,6 +178,29 @@ const fetchDetailData = (event) => {
                     for (let index = 0; index < detailInfoValues.length; index++) {
                         detailInfoValues[index].textContent = infoToRenderArray[index]
                     }
+
+                    //RENDER EVOLUTION CHAIN
+                    const evolutionUrl = dataSpecies.evolution_chain.url
+                    fetch(evolutionUrl)
+                        .then((res) => res.json())
+                        .then((dataEvolution) => {
+
+                            const findAllEvolutionItems = async (obj, arr = []) => {
+                                const evoObject = await obj  
+                                console.log(obj.species);
+                                arr.push(obj.species)
+                                if (evoObject.hasOwnProperty("evolves_to")) {
+                                    if (evoObject.evolves_to.length) {
+                                        findAllEvolutionItems(evoObject.evolves_to[0], [...arr])
+                                    }
+                                }
+                                return arr
+                            }
+
+                            let evoArr = findAllEvolutionItems(dataEvolution.chain)
+                            console.log(evoArr);
+                            
+                        })
                 })
         })
     
