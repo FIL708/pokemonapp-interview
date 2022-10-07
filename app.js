@@ -76,6 +76,9 @@ const fetchDetailData = (event) => {
             detailMeasure[0].textContent = `Height: ${data.height * 10} cm`
             detailMeasure[1].textContent = `Weight: ${data.weight / 10} kg`
         })
+    
+    const mainWrapper = document.querySelector(".wrapper")
+    if (mainWrapper.style.display === "none") {mainWrapper.style.display = "block"}
 }
 
 

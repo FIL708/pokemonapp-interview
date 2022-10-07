@@ -15,41 +15,43 @@
     <ul id="pokemon-list">
     </ul>
     <main class="pokemon-detail">
-        <p class="detail-id"></p>
-        <h1 class="detail-name"></h1>
-        <div class="detail-types"></div>
-        <img src="" alt="pokemon" class="detail-image">
-        <div class="detail-stats">
-            <div>
-                <p class="detail-stat-name hp"></p>
-                <progress max="120" value=""></progress>
+        <div class="wrapper" style="display: none">
+            <p class="detail-id"></p>
+            <h1 class="detail-name"></h1>
+            <div class="detail-types"></div>
+            <img src="" alt="pokemon" class="detail-image">
+            <div class="detail-stats">
+                <div>
+                    <p class="detail-stat-name hp"></p>
+                    <progress max="120" value=""></progress>
+                </div>
+                <div>
+                    <p class="detail-stat-name attack"></p>
+                    <progress max="120" value=""></progress>
+                </div>
+                <div>
+                    <p class="detail-stat-name defense"></p>
+                    <progress max="120" value=""></progress>
+                </div>
+                <div>
+                    <p class="detail-stat-name special-attack"></p>
+                    <progress max="120" value=""></progress>
+                </div>
+                <div>
+                    <p class="detail-stat-name special-defense"></p>
+                    <progress max="120" value=""></progress>
+                </div>
+                <div>
+                    <p class="detail-stat-name speed"></p>
+                    <progress max="120" value=""></progress>
+                </div>
+                <div class="detail-measure">
+                    <p id="height" class="detail-size"></p>
+                    <p id="weight"class="detail-size"></p>
+                </div>
             </div>
-            <div>
-                <p class="detail-stat-name attack"></p>
-                <progress max="120" value=""></progress>
-            </div>
-            <div>
-                <p class="detail-stat-name defense"></p>
-                <progress max="120" value=""></progress>
-            </div>
-            <div>
-                <p class="detail-stat-name special-attack"></p>
-                <progress max="120" value=""></progress>
-            </div>
-            <div>
-                <p class="detail-stat-name special-defense"></p>
-                <progress max="120" value=""></progress>
-            </div>
-            <div>
-                <p class="detail-stat-name speed"></p>
-                <progress max="120" value=""></progress>
-            </div>
-            <div class="detail-measure">
-                <p id="height" class="detail-size"></p>
-                <p id="weight"class="detail-size"></p>
-            </div>
+            <div class="datail-evolution"></div>
         </div>
-        <div class="datail-evolution"></div>
     </main>
     <script src="app.js"></script>
 </body>
