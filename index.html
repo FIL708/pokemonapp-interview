@@ -7,10 +7,14 @@
     <title>Pokemon - interview project</title>
 </head>
 <body>
-    <input type="text" placeholder="Search by name...">
+    <input 
+        type="text"
+        id="search-bar"
+        onkeyup=filterPokemonListByName()
+        placeholder="Search by name...">
     <ul id="pokemon-list">
     </ul>
-    <main class=""></main>
+    <main class="pokemon-detail"></main>
     <script src="app.js"></script>
 </body>
 </html>

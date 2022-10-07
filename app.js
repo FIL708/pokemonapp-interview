@@ -8,6 +8,7 @@ fetch("https://pokeapi.co/api/v2/pokemon")
         pokemonNameArray.forEach(element => {
             let pokemonListElement = document.createElement("li");
             pokemonListElement.textContent = element.name;
+            pokemonListElement.classList.add("pokemon-name")
             pokemonList.appendChild(pokemonListElement);
             pokemonListElement.addEventListener("click", fetchDetailData)
         });   
@@ -20,7 +21,20 @@ const fetchDetailData = (event) => {
         .then((data) => console.log(data))
 }
 
-let imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/ditto.png"
+// let imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/ditto.png"
+// SEARCH BAR
+
+const filterPokemonListByName = () => {
+    let input = document.getElementById("search-bar").value.toLowerCase();
+    const pokemonListElements = document.getElementsByClassName("pokemon-name");
+    for (let index = 0; index < pokemonListElements.length; index++) {
+        let itemToCheck = pokemonListElements[index].innerHTML.toLowerCase()
+        !itemToCheck.includes(input) ?
+            pokemonListElements[index].style.display = "none" :
+            pokemonListElements[index].style.display = "list-item"
+    }   
+}
+
 
 // git add .
 // git commit -m "adding functionality"
