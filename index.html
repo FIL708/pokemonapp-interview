@@ -16,11 +16,15 @@
     </ul>
     <main class="pokemon-detail">
         <div class="wrapper" style="display: none">
-            <p class="detail-id"></p>
-            <h1 class="detail-name"></h1>
-            <div class="detail-types"></div>
-            <img src="" alt="pokemon" class="detail-image">
-            <div class="detail-stats">
+            <section>
+                <p class="detail-id"></p>
+                <img src="" alt="pokemon" class="detail-icon">
+                <h1 class="detail-name"></h1>
+                <div class="detail-types"></div>
+                <img src="" alt="pokemon" class="detail-image">
+            </section>
+            <section class="detail-stats">
+                <h3>Base stats</h3>
                 <div>
                     <span class="detail-stat-name hp">hp</span>
                     <progress max="120" value=""></progress>
@@ -51,12 +55,37 @@
                     <progress max="120" value=""></progress>
                     <span class="detail-stat-value"></span>
                 </div>
-                <div class="detail-measure">
-                    <p id="height" class="detail-size"></p>
-                    <p id="weight"class="detail-size"></p>
-                </div>
-            </div>
-            <div class="datail-evolution"></div>
+            </section>
+            <section class="detail-info">
+                <h3>Information</h3>
+                <ul>
+                    <li class="detail-info">
+                        <span class="detail-info-title">Height</span>
+                        <span class="detail-info-value"></span>
+                    </li>
+                    <li class="detail-info">
+                        <span class="detail-info-title">Weight</span>
+                        <span class="detail-info-value"></span>
+                    </li>
+                    <li class="detail-info">
+                        <span class="detail-info-title">Color</span>
+                        <span class="detail-info-value"></span>
+                    </li>
+                    <li class="detail-info">
+                        <span class="detail-info-title">Shape</span>
+                        <span class="detail-info-value"></span>
+                    </li>
+                    <li class="detail-info">
+                        <span class="detail-info-title">Habitat</span>
+                        <span class="detail-info-value"></span>
+                    </li>
+                    <li class="detail-info">
+                        <span class="detail-info-title">Generation</span>
+                        <span class="detail-info-value"></span>
+                    </li>
+                </ul>
+            </section>
+            <section class="datail-evolution"></section>
         </div>
     </main>
     <script src="app.js"></script>

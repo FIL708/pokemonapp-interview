@@ -1,5 +1,5 @@
 const pokemonList = document.getElementById("pokemon-list")
-
+//RENDER POKEMON LIST
 fetch("https://pokeapi.co/api/v2/pokemon")
     .then((res) => res.json())
     .then((data) => {
@@ -9,24 +9,23 @@ fetch("https://pokeapi.co/api/v2/pokemon")
         pokemonNameArray.forEach(item => {
             let pokemonListElement = document.createElement("li");
             pokemonListElement.textContent = item.name;
-            pokemonListElement.classList.add("pokemon-name")
+            pokemonListElement.classList.add("pokemon-name");
+            pokemonListElement.setAttribute("value", item.name)
             pokemonList.appendChild(pokemonListElement);
             pokemonListElement.addEventListener("click", fetchDetailData)
         });   
-    })
+})
 
 const detailId = document.querySelector(".detail-id")
 const detailName = document.querySelector(".detail-name")
 const detailTypes = document.querySelector(".detail-types")
+const detailIcon = document.querySelector(".detail-icon")
 const detailImage = document.querySelector(".detail-image")
 const detailStatsValue = document.getElementsByClassName("detail-stat-value")
 const detailProgress = document.getElementsByTagName("progress")
-const detailMeasure = document.querySelectorAll(".detail-size")
-const detailEvo = document.querySelector(".detail-evolution")
-
+const detailInfoValues = document.getElementsByClassName("detail-info-value")
 
 const addBgColorDependOnType = (element) => {
-    console.log(element, "color change", element.textContent);
     const type = element.textContent
 
     switch (element.textContent) {
@@ -104,10 +103,12 @@ const addBgColorDependOnType = (element) => {
     }
     
 }
-
+//FETCH & RENDER POKEMON DETAILS
 const fetchDetailData = (event) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${event.target.textContent.toLowerCase()}`
-    fetch(url)
+    console.log(event.target.getAttribute("value"));
+    
+    const PokemonUrl = `https://pokeapi.co/api/v2/pokemon/${event.target.getAttribute("value")}`
+    fetch(PokemonUrl)
         .then((res) => res.json())
         .then((data) => {
             
@@ -132,19 +133,22 @@ const fetchDetailData = (event) => {
                 addBgColorDependOnType(typeToRender)
             });
 
-            //RENDER IMAGE OF POKEMON
+            //RENDER ICON OF POKEMON
             const imagesArray = [data.sprites.front_default, data.sprites.back_default];
-            detailImage.src = imagesArray[0];
+            detailIcon.src = imagesArray[0];
             const changeImage = () => {
-                if (detailImage.src === imagesArray[0]) {
-                    detailImage.src = imagesArray[1]
-                } else if (detailImage.src === imagesArray[1]) {
-                    detailImage.src = imagesArray[0]
+                if (detailIcon.src === imagesArray[0]) {
+                    detailIcon.src = imagesArray[1]
+                } else if (detailIcon.src === imagesArray[1]) {
+                    detailIcon.src = imagesArray[0]
                 }
                 setTimeout(changeImage, 2500);
             }
             setTimeout(changeImage, 2500);
 
+            //RENDER IMAGE OF POKEMON
+            detailImage.src = data.sprites.other.dream_world.front_default
+            
             //RENDER STATS OF POKEMON
             for (let index = 0; index < detailProgress.length; index++) {
                 let statValue = data.stats[index].base_stat
@@ -153,9 +157,25 @@ const fetchDetailData = (event) => {
                 detailStatsValue[index].textContent = statValue
             }
 
-            //RENDER SIZE OF POKEMON
-            detailMeasure[0].textContent = `Height: ${data.height * 10} cm`
-            detailMeasure[1].textContent = `Weight: ${data.weight / 10} kg`
+            //FETCH & RENDER ADDITIONAL INFORMATION
+            const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${event.target.textContent.toLowerCase()}`
+            
+            fetch(speciesUrl)
+                .then((res) => res.json())
+                .then((dataSpecies) => {
+                    let infoToRenderArray = [
+                        data.height * 10 + " cm",
+                        data.weight / 10 + " kg",
+                        dataSpecies.color.name,
+                        dataSpecies.shape.name,
+                        dataSpecies.habitat.name.replace("-", " "),
+                        dataSpecies.generation.name.replace("-", " ")
+                    ]
+
+                    for (let index = 0; index < detailInfoValues.length; index++) {
+                        detailInfoValues[index].textContent = infoToRenderArray[index]
+                    }
+                })
         })
     
     const mainWrapper = document.querySelector(".wrapper")
