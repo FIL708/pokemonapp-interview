@@ -15,14 +15,18 @@
         <img src="images/pokemon-logo.png" alt="logo" class="logo">
         <h1>Pokedex App</h1>
     </header>
+
     <section class="pokemon-sidebar">
         <input 
-            type="text"
-            id="search-bar"
-            onkeyup=filterPokemonListByName()
-            placeholder="Search by name...">
-        <ul id="pokemon-list">
-        </ul>
+        type="text"
+        id="search-bar"
+        class="search-bar"
+        onkeyup=filterPokemonListByName()
+        placeholder="Search by name...">
+        <div class="pokemon-list-container">
+            <ul id="pokemon-list">
+            </ul>
+        </div> 
 </section>
     <main class="pokemon-detail">
         <div class="wrapper" style="display: none">
