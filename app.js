@@ -110,6 +110,8 @@ const addBgColorDependOnType = (element) => {
 //FETCH & RENDER POKEMON DETAILS
 const fetchDetailData = (event) => {
     const targetRef = event.target.getAttribute("value")
+    console.log(targetRef);
+    
     
     const PokemonUrl = `https://pokeapi.co/api/v2/pokemon/${targetRef}`
     fetch(PokemonUrl)
@@ -151,6 +153,7 @@ const fetchDetailData = (event) => {
 
             //RENDER IMAGE OF POKEMON
             detailImage.src = data.sprites.other.dream_world.front_default
+            detailImage.alt = data.name
             
             //RENDER STATS OF POKEMON
             for (let index = 0; index < detailProgress.length; index++) {
@@ -207,18 +210,39 @@ const fetchDetailData = (event) => {
 
                             //RENDER IMAGE AND NAME OF POKEMON IN EVOLUTION CHAIN
                             detailEvolution.innerHTML = ""
+                            const evolutionHeader = document.createElement("h3")
+                            evolutionHeader.textContent = "Evolution Chain"
+                            detailEvolution.appendChild(evolutionHeader)
+
                             validEvoArr.forEach(url => {
                                 fetch(url)
                                     .then((res) => res.json())
                                     .then((dataChain) => {
                                         const imageUrl = dataChain.sprites.other.dream_world.front_default
-                                        console.log(imageUrl);
-
+                                        const pokemonName = dataChain.name
+                                        console.log(dataChain.name);
+                                        
+                                        //CREATE IMAGE 
                                         const imageToRender = document.createElement("img")
                                         imageToRender.className = "evolution-img"
                                         imageToRender.setAttribute("src", imageUrl)
-                                        detailEvolution.appendChild(imageToRender)
-                                        
+                                        imageToRender.setAttribute("alt", pokemonName)
+                                        imageToRender.setAttribute("value", pokemonName)
+                                        imageToRender.addEventListener("click", fetchDetailData)
+
+
+                                        //CREATE NAME PARAGRAPH
+                                        const nameParagraph = document.createElement("p")
+                                        nameParagraph.textContent = pokemonName
+                                        nameParagraph.className = "evolution-paragraph"
+
+                                        //CREATE EVOLVE CONTAINER AND APPEND ALL ELEMENTS
+                                        const evolveContainer = document.createElement("div")
+                                        evolveContainer.className = "evolution-container"
+                                        detailEvolution.appendChild(evolveContainer)
+                                        detailEvolution.appendChild(evolveContainer)
+                                        evolveContainer.appendChild(imageToRender)
+                                        evolveContainer.appendChild(nameParagraph)
                                     })
                             });
                         })
