@@ -179,27 +179,34 @@ const fetchDetailData = (event) => {
                         detailInfoValues[index].textContent = infoToRenderArray[index]
                     }
 
-                    //RENDER EVOLUTION CHAIN
+                    //FETCH & RENDER EVOLUTION CHAIN
                     const evolutionUrl = dataSpecies.evolution_chain.url
                     fetch(evolutionUrl)
                         .then((res) => res.json())
                         .then((dataEvolution) => {
 
-                            const findAllEvolutionItems = async (obj, arr = []) => {
-                                const evoObject = await obj  
-                                console.log(obj.species);
+                            const chainData = dataEvolution.chain
+
+                            //FIND EVOLUTION CHAIN USING RECURSIVE FUNCTION
+                            const findAllEvolutionItems = (obj, arr = []) => {
+                                const evoObject = obj;
                                 arr.push(obj.species)
                                 if (evoObject.hasOwnProperty("evolves_to")) {
                                     if (evoObject.evolves_to.length) {
-                                        findAllEvolutionItems(evoObject.evolves_to[0], [...arr])
+                                        findAllEvolutionItems(evoObject.evolves_to[0], arr)
                                     }
                                 }
                                 return arr
                             }
 
-                            let evoArr = findAllEvolutionItems(dataEvolution.chain)
+                            let evoArr = findAllEvolutionItems(chainData)
                             console.log(evoArr);
                             
+                           //CHANGING POKEMON URL IN EVOLUTION CHAIN FROM .../pokemon-species/... TO /pokemon/
+                           const validEvoArr = evoArr.map(item => item.url.replace("pokemon-species", "pokemon")) 
+                           
+                           //
+                             
                         })
                 })
         })
@@ -222,6 +229,6 @@ const filterPokemonListByName = () => {
 }
 
 
-// git add .
-// git commit -m "adding functionality"
-// git push origin main
+git add .
+git commit -m "adding functionality"
+git push origin main
