@@ -5,25 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon - interview project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <input 
-        type="text"
-        id="search-bar"
-        onkeyup=filterPokemonListByName()
-        placeholder="Search by name...">
-    <ul id="pokemon-list">
-    </ul>
+    <header>
+        <img src="images/pokemon-logo.png" alt="logo" class="logo">
+        <h1>Pokedex App</h1>
+    </header>
+    <section class="pokemon-sidebar">
+        <input 
+            type="text"
+            id="search-bar"
+            onkeyup=filterPokemonListByName()
+            placeholder="Search by name...">
+        <ul id="pokemon-list">
+        </ul>
+</section>
     <main class="pokemon-detail">
         <div class="wrapper" style="display: none">
-            <section>
+            <section class="details-base">
                 <p class="detail-id"></p>
                 <img src="" alt="pokemon" class="detail-icon">
                 <h1 class="detail-name"></h1>
                 <div class="detail-types"></div>
                 <img src="" alt="pokemon" class="detail-image">
             </section>
+            <section class="detail-description"></section>
             <section class="detail-stats">
                 <h3>Base stats</h3>
                 <ul>

@@ -21,6 +21,7 @@ const detailName = document.querySelector(".detail-name")
 const detailTypes = document.querySelector(".detail-types")
 const detailIcon = document.querySelector(".detail-icon")
 const detailImage = document.querySelector(".detail-image")
+const detailDes = document.querySelector(".detail-description")
 const detailStatsValue = document.getElementsByClassName("detail-stat-value")
 const detailProgress = document.getElementsByTagName("progress")
 const detailInfoValues = document.getElementsByClassName("detail-info-value")
@@ -109,14 +110,13 @@ const addBgColorDependOnType = (element) => {
 
 //FETCH & RENDER POKEMON DETAILS
 const fetchDetailData = (event) => {
-    const targetRef = event.target.getAttribute("value")
-    console.log(targetRef);
-    
+    const targetRef = event.target.getAttribute("value");
     
     const PokemonUrl = `https://pokeapi.co/api/v2/pokemon/${targetRef}`
     fetch(PokemonUrl)
         .then((res) => res.json())
         .then((data) => {
+            
             //RENDER ID OF POKEMON
             if (data.id < 10) {
                 detailId.textContent = `#00${data.id}`
@@ -169,7 +169,7 @@ const fetchDetailData = (event) => {
             fetch(speciesUrl)
                 .then((res) => res.json())
                 .then((dataSpecies) => {
-
+                    
                     let infoToRenderArray = [
                         data.height * 10 + " cm",
                         data.weight / 10 + " kg",
@@ -182,6 +182,8 @@ const fetchDetailData = (event) => {
                     for (let index = 0; index < detailInfoValues.length; index++) {
                         detailInfoValues[index].textContent = infoToRenderArray[index]
                     }
+                    const description = dataSpecies.flavor_text_entries[1].flavor_text
+                    detailDes.textContent = description.replace("\f", " ")
 
                     //FETCH & RENDER EVOLUTION CHAIN
                     const evolutionUrl = dataSpecies.evolution_chain.url
@@ -220,7 +222,6 @@ const fetchDetailData = (event) => {
                                     .then((dataChain) => {
                                         const imageUrl = dataChain.sprites.other.dream_world.front_default
                                         const pokemonName = dataChain.name
-                                        console.log(dataChain.name);
                                         
                                         //CREATE IMAGE 
                                         const imageToRender = document.createElement("img")
@@ -268,5 +269,5 @@ const filterPokemonListByName = () => {
 
 
 // git add .
-// git commit -m "adding functionality"
+// git commit -m "styling..."
 // git push origin main

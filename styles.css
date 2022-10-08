@@ -1,3 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* font-family: 'Kanit', sans-serif;
+font-family: 'Poppins', sans-serif; */
 body {
     background-color: #b1ccf7
+}
+/* HEADER */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+.logo {
+    width: 50px;
+}
+
+header h1 {
+    font-size: 3.2rem;
+    font-family: 'Kanit', sans-serif;
+}
+
+/* LIST */
+#pokemon-list {
+    list-style: none
 }
