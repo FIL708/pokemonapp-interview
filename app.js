@@ -24,6 +24,7 @@ const detailImage = document.querySelector(".detail-image")
 const detailStatsValue = document.getElementsByClassName("detail-stat-value")
 const detailProgress = document.getElementsByTagName("progress")
 const detailInfoValues = document.getElementsByClassName("detail-info-value")
+const detailEvolution = document.querySelector(".detail-evolution")
 
 //FUNCTION TO CHANGE TYPE BACKGROUND-COLOR DEPEND ON A TYPE OF POKEMON
 const addBgColorDependOnType = (element) => {
@@ -200,13 +201,26 @@ const fetchDetailData = (event) => {
                             }
 
                             let evoArr = findAllEvolutionItems(chainData)
-                            console.log(evoArr);
-                            
-                           //CHANGING POKEMON URL IN EVOLUTION CHAIN FROM .../pokemon-species/... TO /pokemon/
-                           const validEvoArr = evoArr.map(item => item.url.replace("pokemon-species", "pokemon")) 
-                           
-                           //
-                             
+
+                            //CHANGING POKEMON URL IN EVOLUTION CHAIN FROM .../pokemon-species/... TO /pokemon/
+                            const validEvoArr = evoArr.map(item => item.url.replace("pokemon-species", "pokemon"))
+
+                            //RENDER IMAGE AND NAME OF POKEMON IN EVOLUTION CHAIN
+                            detailEvolution.innerHTML = ""
+                            validEvoArr.forEach(url => {
+                                fetch(url)
+                                    .then((res) => res.json())
+                                    .then((dataChain) => {
+                                        const imageUrl = dataChain.sprites.other.dream_world.front_default
+                                        console.log(imageUrl);
+
+                                        const imageToRender = document.createElement("img")
+                                        imageToRender.className = "evolution-img"
+                                        imageToRender.setAttribute("src", imageUrl)
+                                        detailEvolution.appendChild(imageToRender)
+                                        
+                                    })
+                            });
                         })
                 })
         })
@@ -229,6 +243,6 @@ const filterPokemonListByName = () => {
 }
 
 
-git add .
-git commit -m "adding functionality"
-git push origin main
+// git add .
+// git commit -m "adding functionality"
+// git push origin main
