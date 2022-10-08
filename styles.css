@@ -35,9 +35,8 @@ header h1 {
 
 /* LIST */
 .pokemon-sidebar {
-    margin: auto;
+    margin:  2rem auto;
     width: 60%;
-    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -55,6 +54,7 @@ header h1 {
     height: 300px;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    border-radius: 0 0 5px 5px;
 }
 #pokemon-list {
     list-style: none;
@@ -65,5 +65,10 @@ header h1 {
     font-size: 1.4rem;
     text-transform: capitalize;
     cursor: pointer;
-    border-bottom: 1px solid rgb(175, 175, 175);
+    border-bottom: 1px solid #6b6b6b;
+    background-color: #97bbf5;
+}
+
+#pokemon-list li:last-of-type {
+    border: none
 }
