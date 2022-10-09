@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-size: 10px;
     font-family: 'Poppins', sans-serif;
-    color: #111;
+    color: #222;
 }
 
 /* font-family: 'Kanit', sans-serif;
@@ -42,9 +42,8 @@ header h1 {
 }
 
 .search-bar {
-    display: block;
-    margin: auto;
     width: 100%;
+    padding: .5rem;
     border: none;
     border-radius: 5px 5px 0 0;
     text-align: center;
@@ -122,12 +121,16 @@ header h1 {
     color: #000;
 }
 
+.detail-stat-value {
+    font-weight: 700;
+}
+
 /* DESCRIPTION */
 .detail-description div {
     display: flex;
     align-items: center;
     width: 90%;
-    padding: 1rem 1rem 1rem 0;
+    padding: 1rem 2rem 1rem 0;
     background-color: #97bbf5;
 }
 
@@ -190,11 +193,15 @@ header h1 {
 }
 
 .detail-info ul li {
+    flex-basis: 42%;
+    padding: .5rem 0;
     border-bottom: 1px solid #2e8fe9;
     text-align: left;
-    flex-basis: 40%;
 }
-
+.detail-info-title {
+    padding-right: .5rem;
+    font-weight: 700;
+}
 .detail-info ul li:nth-child(odd) {
     margin-right: 2rem;
 }
@@ -205,4 +212,26 @@ header h1 {
 
 .detail-info ul li.last {
     border: none;
+}
+
+/* EVOLUTION CHAIN */
+.evolutions-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    width: 90%;
+    background-color: #97bbf5;
+}
+
+.evolution-img {
+     height: 80px;
+     width: 77px;
+}
+
+.evolution-paragraph {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: center;
 }

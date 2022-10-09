@@ -25,7 +25,7 @@ const detailDes = document.querySelector(".description-text")
 const detailStatsValue = document.getElementsByClassName("detail-stat-value")
 const detailProgress = document.getElementsByTagName("progress")
 const detailInfoValues = document.getElementsByClassName("detail-info-value")
-const detailEvolution = document.querySelector(".detail-evolution")
+const detailEvolution = document.querySelector(".evolutions-container")
 
 //FUNCTION TO CHANGE TYPE BACKGROUND-COLOR DEPEND ON A TYPE OF POKEMON
 const addBgColorDependOnType = (element) => {
@@ -215,11 +215,6 @@ const fetchDetailData = (event) => {
 
                             //RENDER IMAGE AND NAME OF POKEMON IN EVOLUTION CHAIN
                             detailEvolution.innerHTML = ""
-                            const evolutionHeader = document.createElement("h3")
-                            evolutionHeader.className = "table-title"
-                            evolutionHeader.textContent = "Evolution Chain"
-                            detailEvolution.appendChild(evolutionHeader)
-
                             validEvoArr.forEach(url => {
                                 fetch(url)
                                     .then((res) => res.json())
