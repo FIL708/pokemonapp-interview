@@ -89,8 +89,8 @@ header h1 {
 }
 
 .detail-image {
-    width: 226px;
-    height: auto;
+    width: auto;
+    height: 220px;
 }
 
 .detail-name {
@@ -114,3 +114,84 @@ header h1 {
 }
 
 /* DESCRIPTION */
+.detail-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.detail-description h3 {
+    width: 90%;
+    background-color: #fff;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.detail-description div {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding: 1rem;
+    background-color: #97bbf5;
+}
+
+.detail-icon {
+    width: 80px;
+}
+
+.description-text {
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+/* STATS */
+.detail-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.detail-stats h3 {
+    width: 90%;
+    background-color: #fff;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.detail-stats ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    list-style: none;
+    background-color: #97bbf5;
+}
+
+.detail-stats ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 1px solid #6b6b6b;
+}
+
+.detail-stats ul li span {
+    flex-basis: 34%;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.detail-stat-name {
+    align-self: flex-start;
+}
+.detail-stat-name {
+    display: inline-block;
+    align-self: flex-start;
+}
+.detail-stats ul li progress {
+    justify-self: center;
+}
