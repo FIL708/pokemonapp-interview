@@ -170,13 +170,16 @@ const fetchDetailData = (event) => {
                 .then((res) => res.json())
                 .then((dataSpecies) => {
                     
+                    const gen = dataSpecies.generation.name
+                    const validGen = `gen ${gen.substr(gen.length - 1).toUpperCase()}`
+                    
                     let infoToRenderArray = [
                         data.height * 10 + " cm",
                         data.weight / 10 + " kg",
                         dataSpecies.color.name,
                         dataSpecies.shape.name,
                         dataSpecies.habitat.name.replace("-", " "),
-                        dataSpecies.generation.name.replace("-", " ")
+                        validGen
                     ]
 
                     for (let index = 0; index < detailInfoValues.length; index++) {
@@ -213,6 +216,7 @@ const fetchDetailData = (event) => {
                             //RENDER IMAGE AND NAME OF POKEMON IN EVOLUTION CHAIN
                             detailEvolution.innerHTML = ""
                             const evolutionHeader = document.createElement("h3")
+                            evolutionHeader.className = "table-title"
                             evolutionHeader.textContent = "Evolution Chain"
                             detailEvolution.appendChild(evolutionHeader)
 

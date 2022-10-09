@@ -21,7 +21,7 @@ header {
     gap: 2rem;
     margin: 10px;
     padding: 10px;
-    background-color: aliceblue;
+    background-color: #f0f8ff;
     border-radius: 5px;
 }
 
@@ -66,7 +66,7 @@ header h1 {
     padding: .8rem;
     font-size: 1.4rem;
     text-transform: capitalize;
-    border-bottom: 1px solid #6b6b6b;
+    border-bottom: 1px solid #2e8fe9;
     background-color: #97bbf5;
     letter-spacing: 1px;
     cursor: pointer;
@@ -77,10 +77,19 @@ header h1 {
 }
 
 /* BASE INFORMATION */
-.details-base {
+.table {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3rem;
+}
+
+.table-title {
+    width: 90%;
+    background-color: #f0f8ff;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    font-size: 1.8rem;
 }
 
 .detail-id {
@@ -114,26 +123,11 @@ header h1 {
 }
 
 /* DESCRIPTION */
-.detail-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-}
-
-.detail-description h3 {
-    width: 90%;
-    background-color: #fff;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    font-size: 1.8rem;
-}
-
 .detail-description div {
     display: flex;
     align-items: center;
     width: 90%;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0;
     background-color: #97bbf5;
 }
 
@@ -147,25 +141,9 @@ header h1 {
 }
 
 /* STATS */
-.detail-stats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-}
-
-.detail-stats h3 {
-    width: 90%;
-    background-color: #fff;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    font-size: 1.8rem;
-}
-
 .detail-stats ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     width: 90%;
     list-style: none;
     background-color: #97bbf5;
@@ -175,54 +153,56 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    border-bottom: 1px solid #6b6b6b;
+    padding: .5rem;
+    border-bottom: 1px solid #2e8fe9;
+}
+
+.detail-stats ul li:last-of-type {
+    border: none;
 }
 
 .detail-stats ul li span {
     flex-basis: 34%;
-    font-size: 1.1rem;
-    text-align: center;
+    font-size: 1.2rem;
 }
 
 .detail-stat-name {
-    align-self: flex-start;
+    text-align: left;
 }
-.detail-stat-name {
-    display: inline-block;
-    align-self: flex-start;
+.detail-stat-value {
+    padding-right: .5rem;
+    text-align: right;
 }
+
 .detail-stats ul li progress {
-    justify-self: center;
+    height: 2rem;
 }
 
 /* INFO */
-.detail-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-}
-
-.detail-info h3 {
-    width: 90%;
-    background-color: #fff;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    font-size: 1.8rem;
-}
-
 .detail-info ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 1rem 0;
     width: 90%;
     list-style: none;
     background-color: #97bbf5;
 }
 
 .detail-info ul li {
-    text-align: center;
-    font-size: 1.2rem;
+    border-bottom: 1px solid #2e8fe9;
+    text-align: left;
     flex-basis: 40%;
+}
+
+.detail-info ul li:nth-child(odd) {
+    margin-right: 2rem;
+}
+
+.detail-info ul li span {
+    font-size: 1.2rem;
+}
+
+.detail-info ul li.last {
+    border: none;
 }
