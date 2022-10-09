@@ -1,6 +1,6 @@
 const pokemonList = document.getElementById("pokemon-list")
 //RENDER POKEMON LIST
-fetch("https://pokeapi.co/api/v2/pokemon")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     .then((res) => res.json())
     .then((data) => {
         
@@ -169,18 +169,16 @@ const fetchDetailData = (event) => {
             fetch(speciesUrl)
                 .then((res) => res.json())
                 .then((dataSpecies) => {
-                    
+
+                    const height = data.height === null ? "unknown" : data.height * 10 + " cm"
+                    const weight = data.weight === null ? "unknown" : data.weight / 10 + " kg"
+                    const color = dataSpecies.color === null ? "unknown" : dataSpecies.color.name
+                    const shape = dataSpecies.shape === null ? "unknown" : dataSpecies.shape.name
+                    const habitat = dataSpecies.habitat === null ? "unknown" : dataSpecies.habitat.name.replace("-", " ")
                     const gen = dataSpecies.generation.name
                     const validGen = `gen ${gen.substr(gen.length - 1).toUpperCase()}`
-                    
-                    let infoToRenderArray = [
-                        data.height * 10 + " cm",
-                        data.weight / 10 + " kg",
-                        dataSpecies.color.name,
-                        dataSpecies.shape.name,
-                        dataSpecies.habitat.name.replace("-", " "),
-                        validGen
-                    ]
+
+                    let infoToRenderArray = [height, weight, color, shape, habitat, validGen]
 
                     for (let index = 0; index < detailInfoValues.length; index++) {
                         detailInfoValues[index].textContent = infoToRenderArray[index]
@@ -195,7 +193,8 @@ const fetchDetailData = (event) => {
                         .then((dataEvolution) => {
 
                             const chainData = dataEvolution.chain
-
+                            console.log(chainData);
+                            
                             //FIND EVOLUTION CHAIN USING RECURSIVE FUNCTION
                             const findAllEvolutionItems = (obj, arr = []) => {
                                 const evoObject = obj;
@@ -208,7 +207,23 @@ const fetchDetailData = (event) => {
                                 return arr
                             }
 
-                            let evoArr = findAllEvolutionItems(chainData)
+                            let evoArr
+
+                            if (chainData.species.name === "eevee") {
+                                console.log(true, chainData.evolves_to);
+                                let eeveeArr = [chainData.species]
+                                for (let index = 0; index < 3; index++) {
+                                    chainData.evolves_to[index];
+                                    console.log(chainData.evolves_to[index].species);
+                                    eeveeArr.push(chainData.evolves_to[index].species)
+                                }
+                                evoArr = eeveeArr
+
+                            } else {
+                                evoArr = findAllEvolutionItems(chainData)
+                                console.log(evoArr);
+                                
+                            }
 
                             //CHANGING POKEMON URL IN EVOLUTION CHAIN FROM .../pokemon-species/... TO /pokemon/
                             const validEvoArr = evoArr.map(item => item.url.replace("pokemon-species", "pokemon"))
