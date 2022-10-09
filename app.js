@@ -279,3 +279,7 @@ const filterPokemonListByName = () => {
 
 //INIT APP
 fetchDetailData(null, "bulbasaur")
+
+// git add .
+// git commit -m "styling..."
+// git push origin main

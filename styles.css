@@ -111,6 +111,7 @@ header h1 {
 .detail-types {
     display: flex;
     gap: 1rem;
+    padding-bottom: 15px;
 }
 
 .detail-type {
@@ -242,6 +243,8 @@ header h1 {
     text-align: center;
 }
 
+
+
 @media (min-width: 360px) {
     * {
         font-size: 11px;
@@ -358,5 +361,6 @@ header h1 {
     .evolution-img:hover {
         transform: scale(1.15);
     }
-  
+    
+    
 }
