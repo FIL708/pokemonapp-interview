@@ -277,5 +277,79 @@ header h1 {
 }
 
 @media (min-width: 1200px) {
+    * {
+        font-size: 12px;
+    }
 
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pokemon-sidebar {
+        margin:  20px;
+        width: 14%;
+        border-radius: 5px;
+    }
+    .pokemon-name {
+        transition: .3s;
+        cursor: pointer;
+    }
+
+    .pokemon-name:hover {
+        background-color: #2e8fe9;
+    }
+
+    .table {
+        width: 376px;
+    }
+
+    .description-content, .detail-stats ul {
+        height: 200px;
+    }
+
+    .detail-icon {
+        width: 180px;
+    }
+
+    .detail-info ul,
+    .evolutions-container {
+        height: 150px;
+    }
+
+    .table-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 800px;
+    }
+
+    .details-base {
+        margin-right: 20px;
+        width: 240px;
+    }
+
+    .detail-image {
+        max-width: 300px;
+        height: 180px;
+    }
+
+    .detail-name {
+        margin-bottom: 12px;
+    }
+
+    .evolution-img {
+        height: 80px;
+        width: 77px;
+    }
+  
+    .evolution-img {
+        transition: .2s;
+        cursor: pointer;
+    }
+    .evolution-img:hover {
+        transform: scale(1.15);
+    }
+  
 }

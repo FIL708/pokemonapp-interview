@@ -176,8 +176,8 @@ const fetchDetailData = (event) => {
                     const shape = dataSpecies.shape === null ? "unknown" : dataSpecies.shape.name
                     const habitat = dataSpecies.habitat === null ? "unknown" : dataSpecies.habitat.name.replace("-", " ")
                     const gen = dataSpecies.generation.name
-                    const validGen = `gen ${gen.substr(gen.length - 1).toUpperCase()}`
-
+                    const validGen = gen.replace("generation-", "").toUpperCase()
+                    
                     let infoToRenderArray = [height, weight, color, shape, habitat, validGen]
 
                     for (let index = 0; index < detailInfoValues.length; index++) {
@@ -193,7 +193,6 @@ const fetchDetailData = (event) => {
                         .then((dataEvolution) => {
 
                             const chainData = dataEvolution.chain
-                            console.log(chainData);
                             
                             //FIND EVOLUTION CHAIN USING RECURSIVE FUNCTION
                             const findAllEvolutionItems = (obj, arr = []) => {
@@ -220,9 +219,7 @@ const fetchDetailData = (event) => {
                                 evoArr = eeveeArr
 
                             } else {
-                                evoArr = findAllEvolutionItems(chainData)
-                                console.log(evoArr);
-                                
+                                evoArr = findAllEvolutionItems(chainData)  
                             }
 
                             //CHANGING POKEMON URL IN EVOLUTION CHAIN FROM .../pokemon-species/... TO /pokemon/
@@ -265,7 +262,7 @@ const fetchDetailData = (event) => {
         })
     
     const mainWrapper = document.querySelector(".wrapper")
-    if (mainWrapper.style.display === "none") {mainWrapper.style.display = "block"}
+    if (mainWrapper.style.visibility === "hidden") {mainWrapper.style.visibility = "visible"}
 }
 
 
