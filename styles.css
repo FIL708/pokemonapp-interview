@@ -84,6 +84,7 @@ header h1 {
 }
 
 .table-title {
+    padding: 5px;
     width: 90%;
     background-color: #f0f8ff;
     border-radius: 5px 5px 0 0;
@@ -148,6 +149,7 @@ header h1 {
 
 /* STATS */
 .detail-stats ul {
+    padding: 5px;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -168,20 +170,22 @@ header h1 {
 }
 
 .detail-stats ul li span {
-    flex-basis: 34%;
     font-size: 1.2rem;
 }
 
 .detail-stat-name {
+    flex-basis: 40%;
     text-align: left;
 }
 .detail-stat-value {
-    padding-right: 5px;
-    text-align: right;
+    flex-basis: 20%;
+    text-align: center;
 }
 
 .detail-stats ul li progress {
+    flex-basis: 40%;
     height: 20px;
+    width: 100px;
 }
 
 /* INFO */
@@ -261,6 +265,7 @@ header h1 {
     * {
         font-size: 20px;
     }
+
     .detail-id {
         margin-bottom: 15px;
     }
@@ -283,6 +288,12 @@ header h1 {
     * {
         font-size: 12px;
     }
+    .pokemon-detail {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     .wrapper {
         display: flex;
@@ -291,8 +302,8 @@ header h1 {
     }
 
     .pokemon-sidebar {
-        margin:  20px;
-        width: 14%;
+        width: 12vw;
+        max-width: 210px;
         border-radius: 5px;
     }
     .search-bar {
@@ -312,7 +323,21 @@ header h1 {
     }
 
     .table {
-        width: 376px;
+        /* width: 22vw;
+        min-width: 376px; */
+        flex-basis: 50%;
+        min-width: 270px;
+    }
+    .details-base {
+        flex-basis: 20%;
+    }
+    .table-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        width: 60vw;
+        min-width: 720px;
     }
 
     .description-content, .detail-stats ul {
@@ -328,20 +353,9 @@ header h1 {
         height: 150px;
     }
 
-    .table-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        width: 800px;
-    }
-
-    .details-base {
-        margin-right: 20px;
-        width: 240px;
-    }
-
     .detail-image {
-        max-width: 300px;
+        margin-left: 12px;
+        max-width: 270px;
         height: 180px;
     }
 
@@ -360,6 +374,12 @@ header h1 {
     }
     .evolution-img:hover {
         transform: scale(1.15);
+    }
+
+    .description-content, .table ul, .evolutions-container, .pokemon-sidebar {
+        -webkit-box-shadow: 16px 12px 21px -18px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 16px 12px 21px -18px rgba(66, 68, 90, 1);
+        box-shadow: 16px 12px 21px -18px rgba(66, 68, 90, 1);
     }
     
     
