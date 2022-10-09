@@ -292,8 +292,15 @@ header h1 {
         width: 14%;
         border-radius: 5px;
     }
+    .search-bar {
+        transition: .2s;
+    }
+    .search-bar:hover {
+        background-color: #a8a8a8;
+        color: #222;
+    }
     .pokemon-name {
-        transition: .3s;
+        transition: .2s;
         cursor: pointer;
     }
 

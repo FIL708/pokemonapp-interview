@@ -109,8 +109,10 @@ const addBgColorDependOnType = (element) => {
 
 
 //FETCH & RENDER POKEMON DETAILS
-const fetchDetailData = (event) => {
-    const targetRef = event.target.getAttribute("value");
+const fetchDetailData = (event, targetRef = "", ) => {
+    if (targetRef === "") {
+        targetRef = event.target.getAttribute("value");
+    }
     
     const PokemonUrl = `https://pokeapi.co/api/v2/pokemon/${targetRef}`
     fetch(PokemonUrl)
@@ -260,9 +262,6 @@ const fetchDetailData = (event) => {
                         })
                 })
         })
-    
-    const mainWrapper = document.querySelector(".wrapper")
-    if (mainWrapper.style.visibility === "hidden") {mainWrapper.style.visibility = "visible"}
 }
 
 
@@ -278,7 +277,5 @@ const filterPokemonListByName = () => {
     }   
 }
 
-
-// git add .
-// git commit -m "styling..."
-// git push origin main
+//INIT APP
+fetchDetailData(null, "bulbasaur")
